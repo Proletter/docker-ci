@@ -1,15 +1,20 @@
-This is the source code for a movie explorer app which runs on R and Shiny. The data is a subset of data from [OMDb](http://www.omdbapi.com/), which in turn is from IMDb and Rotten Tomatoes. The data is saved in a SQLite database.
+## Shiny app CI/CD pipeline
 
-To run it locally, you'll need to install the latest versions of [ggvis](http://ggvis.rstudio.com), [Shiny](http://shiny.rstudio.com), and [dplyr](https://github.com/hadley/dplyr), as well as [RSQLite](http://cran.r-project.org/web/packages/RSQLite/index.html).
+source project: https://github.com/rstudio/shiny-examples/tree/main/051-movie-explorer
 
-```r
-install.packages(c('shiny', 'ggvis', 'dplyr', 'RSQLite'))
-```
+CI/CD tool: Github actions
 
-You may need to restart R to make sure the newly-installed packages work properly.
+### Instructions on how to build docker image
 
-After all these packages are installed, you can run this app by entering the directory, and then running the following in R:
+open project and ensure you are in the root folder that has the Dockerfile.
+Run ``` docker build -t <image name>:<image tag> .```
 
-```s
-shiny::runApp()
-```
+To run container from image run:
+``` docker run -p <host port>:3838 <image name>:<image tag>```
+
+REGISTRY_USERNAME: ${{ vars.REGISTRY_USERNAME }}
+### How to set up pipeline on own environment
+
+Pipeline can be used on any container registry of choice. 
+What you do need is to create a variable called `REGISTRY_USERNAME` and a secret called `REGISTRY_PAT` in your github repo variables like below:
+
