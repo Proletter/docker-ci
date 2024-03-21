@@ -12,7 +12,6 @@ Run ``` docker build -t <image name>:<image tag> .```
 To run container from image run:
 ``` docker run -p <host port>:3838 <image name>:<image tag>```
 
-REGISTRY_USERNAME: ${{ vars.REGISTRY_USERNAME }}
 ### How to set up pipeline on own environment
 
 Pipeline can be used on any container registry of choice. You would need to generate a PAT from the registry.
@@ -28,7 +27,7 @@ After which you would need to create a variable called `REGISTRY_USERNAME`for yo
 ![ScreenShot](/images/secret-example2.jpg)
 
 #### Variable
-![ScreenShot](/images/varible-example.jpg)
+![ScreenShot](/images/variable-example.jpg)
 
 The pipeline is set to trigger on PR, merge and push to main and also on a timer schedule for 7PM every saturday.
 On PR, the pipeline simply builds the image but doesn't push it. 
