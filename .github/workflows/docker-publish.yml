@@ -14,7 +14,7 @@ env:
   REGISTRY: docker.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  DOCKERHUB_ACCOUNT: ${{ github.REGISTRY_USERNAME }}
+  DOCKERHUB_ACCOUNT: ${{ vars.REGISTRY_USERNAME }}
 
 jobs:
   build:
