@@ -56,12 +56,7 @@ jobs:
         uses: docker/metadata-action@v5.0.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.REGISTRY_USERNAME }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            latest
+          tags: latest
           
       # Build and push Docker image with Buildx (don't push on PR)
       - name: Build and push Docker image
