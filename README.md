@@ -1,33 +1,21 @@
-## Shiny app CI/CD pipeline
+Devops interview questions
 
-source project: https://github.com/rstudio/shiny-examples/tree/main/051-movie-explorer
+Kubernetes
+- create a k8s pod using nginx, expose it and make it accessible from the public internet.
+- Ensure
+https://labs.iximiuz.com/playgrounds/k3s-bare
+- What is a storageclass?
+- What other ways can you create pods without using the API server?
 
-CI/CD tool: Github actions
+Docker
+- Write a dockefile for the R app
+- tag it as shinyapp:v1
+- Expose app of port 3000
+- Run the app in detached mode while mounting current app directory as volume. We should be able to make slight changes to the app without rebuilding the entire image
+- Make app accessible from a different machine.
 
-### Instructions on how to build docker image
-
-open project and ensure you are in the root folder that has the Dockerfile.
-Run ``` docker build -t <image name>:<image tag> .```
-
-To run container from image run:
-``` docker run -p <host port>:3838 <image name>:<image tag>```
-
-### How to set up pipeline on own environment
-
-Pipeline can be used on any container registry of choice. You would need to generate a PAT from the registry.
-
-Link for Dockerhub: <https://docs.docker.com/security/for-developers/access-tokens/>
-
-After which you would need to create a variable called `REGISTRY_USERNAME`for your registry username and a secret called `REGISTRY_PAT` for the generated PAT in your github repo variables like below:
-
-#### Secret
-![ScreenShot](/images/secret-example1.jpg)
-
-
-![ScreenShot](/images/secret-example2.jpg)
-
-#### Variable
-![ScreenShot](/images/variable-example.jpg)
-
-The pipeline is set to trigger on PR, merge and push to main and also on a timer schedule for 7PM every saturday.
-On PR, the pipeline simply builds the image but doesn't push it. 
+Terraform
+Write a Terraform module that does the following
+- Creates An EC2 instance with a security group allowing HTTP and SSH traffic.
+- Creates An S3 bucket with proper permissions.
+- Creates An IAM role attached to the EC2 instance to access the S3 bucket.
